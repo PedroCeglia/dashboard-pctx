@@ -1,0 +1,38 @@
+import { useState } from "react";
+// Import Style
+import { EstruturaPaginaStyle, ConteudoPaginaStyle } from "./style";
+// Import Components
+import Header from "./Header";
+import NavBar from "./NavBar";
+
+import { useThemeContext } from "../../contexts/ThemeContext";
+
+export default function EstruturaPagina({ children }) {
+  const [navBarIsActive, setNavBarIsActive] = useState(false);
+  
+  const { theme, handlerTheme } = useThemeContext();
+  const themeContextState = { theme, handlerTheme };
+
+  return (
+    <EstruturaPaginaStyle theme={theme}>
+      <div className="projeto-top-page"></div>
+      <NavBar
+        theme={theme}
+        isActive={navBarIsActive}
+        setIsActive={setNavBarIsActive}
+      />
+      <>
+        <Header
+          themeContextState={themeContextState}
+          navBarIsActiveState={[navBarIsActive, setNavBarIsActive]}
+        />
+        <ConteudoPaginaStyle
+          theme={theme}
+          navBarIsActive={navBarIsActive}
+        >
+          {children}
+        </ConteudoPaginaStyle>
+      </>
+    </EstruturaPaginaStyle>
+  );
+}
