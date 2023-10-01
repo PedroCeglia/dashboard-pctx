@@ -45,6 +45,7 @@ export default function EstruturaTable({ tableList }) {
   useEffect(() => {
     verifyIfHasFilter();
     getFilterList();
+    console.log(filtersList)
   }, [filtersList, tableList]);
 
   function verifyIfHasFilter() {
@@ -114,8 +115,10 @@ export default function EstruturaTable({ tableList }) {
 
   const [matrizTabelaPagination, setMatrizTabelaPagination] = useState([]);
   const [indexPaginationActive, setIndexPaginationActive] = useState(0);
+  const listaFinal = matrizTabelaPagination[indexPaginationActive] != null ? matrizTabelaPagination[indexPaginationActive] : []
+
   useEffect(() => {
-    let matrizTabelaSection = [[]];
+    let matrizTabelaSection = [];
     uiTableList.map((item, key) => {
       if (key % 100 === 0) {
         // ADD new Section
@@ -135,6 +138,7 @@ export default function EstruturaTable({ tableList }) {
       console.log(indexPaginationActive);
       setIndexPaginationActive((state) => state + 1);
     } else {
+      console.log("indexPaginationActive");
       setIndexPaginationActive(matrizTabelaPagination.lenght - 1);
     }
   }
@@ -142,9 +146,14 @@ export default function EstruturaTable({ tableList }) {
     if (backToAll || indexPaginationActive <= 0) {
       setIndexPaginationActive(0);
     } else {
-      setIndexPaginationActive((state) => --state);
+      setIndexPaginationActive((state) => state - 1);
     }
   }
+
+  useEffect(()=>{
+    console.log("Lista Final Index: " + indexPaginationActive)
+    console.log(listaFinal)
+  },[listaFinal])
 
   //
 
@@ -196,7 +205,7 @@ export default function EstruturaTable({ tableList }) {
         removeFilterItem={removeItemFilter}
       />
       <TableBody
-        filterTableList={uiTableList}
+        filterTableList={listaFinal}
         tableTextPropsList={tableTextPropsList}
         itemsSelectedList={itemsSelectedList}
         setItemsSelectedList={setItemsSelectedList}

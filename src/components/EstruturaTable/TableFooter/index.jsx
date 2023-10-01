@@ -36,23 +36,23 @@ export default function TableFooter({
 
             { /* Has After */
               indexPaginationActive > 0 && (
-                <button onClick={()=>{ setIndexPaginationActive(indexPaginationActive)}}>{indexPaginationActive}</button>
+                <button onClick={()=>{ setIndexPaginationActive(state => state - 1)}}>{indexPaginationActive}</button>
               ) 
             }
 
             <div>{++indexPaginationActive}</div>
 
             { /* Has Before */
-              indexPaginationActive < matrizPaginationLength - 1 && (
+              indexPaginationActive < matrizPaginationLength && (
                 <button onClick={()=>{ setIndexPaginationActive(state => state + 1)}}>{indexPaginationActive + 1}</button>
               ) 
             }
 
             { /* has more than 2 */
-              indexPaginationActive + 1 < matrizPaginationLength - 1 && (
+              indexPaginationActive + 1 < matrizPaginationLength && (
                 <>
                   <div>...</div>
-                  <button onClick={()=>{ setIndexPaginationActive(matrizPaginationLength - 1)}}>{matrizPaginationLength - 1}</button>
+                  <button onClick={()=>{ setIndexPaginationActive(matrizPaginationLength - 1)}}>{matrizPaginationLength}</button>
                 </>
               ) 
             }
