@@ -9,7 +9,7 @@ import { useThemeContext } from "../../contexts/ThemeContext";
 
 export default function EstruturaPagina({ children }) {
   const [navBarIsActive, setNavBarIsActive] = useState(false);
-  
+
   const { theme, handlerTheme } = useThemeContext();
   const themeContextState = { theme, handlerTheme };
 
@@ -21,18 +21,10 @@ export default function EstruturaPagina({ children }) {
         isActive={navBarIsActive}
         setIsActive={setNavBarIsActive}
       />
-      <>
-        <Header
-          themeContextState={themeContextState}
-          navBarIsActiveState={[navBarIsActive, setNavBarIsActive]}
-        />
-        <ConteudoPaginaStyle
-          theme={theme}
-          navBarIsActive={navBarIsActive}
-        >
-          {children}
-        </ConteudoPaginaStyle>
-      </>
+
+      <ConteudoPaginaStyle theme={theme} navBarIsActive={navBarIsActive}>
+        {children}
+      </ConteudoPaginaStyle>
     </EstruturaPaginaStyle>
   );
 }
