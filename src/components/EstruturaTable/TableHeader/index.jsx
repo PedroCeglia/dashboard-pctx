@@ -1,28 +1,27 @@
-import { TableHeaderStyle } from "../style";
+import { TableHeaderStyle } from "./style";
+import { useThemeContext } from "../../../contexts/ThemeContext";
 import ItemTableHeader from "./ItemTableHeader";
 
 export default function TableHeader({
-  headerTableList,
-  headerTablePropsList,
-  theme,
-  filterQuery,
-  setFilterQuery,
+  tableTextPropsList,
+  tablePropsList,
   addNewFilterItem,
   removeFilterItem,
 }) {
+  const { theme } = useThemeContext();
+
   return (
     <TableHeaderStyle>
       <tr>
-        {headerTableList.map((item, id) => {
+        {tableTextPropsList.map((item, id) => {
           return (
             <ItemTableHeader
-              filterQuery={filterQuery}
               addNewFilterItem={addNewFilterItem}
               removeFilterItem={removeFilterItem}
               theme={theme}
               key={"th tableHeaderList " + id}
               itemName={item}
-              propsName={headerTablePropsList[id]}
+              propsName={tablePropsList[id]}
             />
           );
         })}
