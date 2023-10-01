@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const ItemTableHeaderStyle = styled.th`
+    min-width: 50px;
     div{
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;        
     }
 
