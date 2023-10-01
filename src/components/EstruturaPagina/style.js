@@ -4,7 +4,6 @@ import style from "../../styles";
 export const EstruturaPaginaStyle = styled.div`
     min-height: calc(100vh);
     width: 100%;
-    padding-top: 80px;
     padding-bottom: 70px;
 
     position: relative;
@@ -20,10 +19,10 @@ export const EstruturaPaginaStyle = styled.div`
 `
 export const ConteudoPaginaStyle = styled.main`
     width: calc(${({navBarIsActive}) => navBarIsActive ? "100% - 250px" : "100% - 50px"});
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh);
     
     position: absolute;
-    top: 80px;
+    top: 0;
     right: 0;
 
     transition: width .3s;
