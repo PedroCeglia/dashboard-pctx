@@ -1,27 +1,29 @@
 import styled from "styled-components";
 
 export const EstruturaTableStyled = styled.table`
-   display: inline-block;
-   background-color: rgba(255,255,255,.8);
-   max-width: 90%;
-   min-height: 300px;
-   overflow-x: auto;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.8);
 
+  height: 100vh;
+  width: 100%;
 
-   tr{
-      padding: 10px;
-      background-color: rgba(0,0,0,.3);
-   }
-   td, th{
-      padding: 10px 20px ;
-   }
+  overflow: auto;
 
-`
+  border-collapse: collapse;
+  position: relative;
 
-export const TableHeaderStyle = styled.thead`
-border-top-right-radius:10px;
-border-top-left-radius:10px;
-   
-`
-export const TableBodyStyle = styled.tbody``
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.6);
+    border-radius: 5px;
+  }
+
+`;
 
