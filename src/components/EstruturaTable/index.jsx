@@ -1,173 +1,212 @@
 import { useEffect, useState } from "react";
-import {
-  EstruturaTableStyled,
-  TableHeaderStyle,
-  TableBodyStyle,
-} from "./style";
+import { EstruturaTableStyled } from "./style";
 
-import ItemTableHeader from "./TableHeader/ItemTableHeader";
-import { useThemeContext } from "../../contexts/ThemeContext";
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
+import TableFooter from "./TableFooter";
+import TableCaption from "./TableCaption";
 
-export default function EstruturaTable({ tableList = [{}] }) {
-  const { theme } = useThemeContext();
-  const [filterQuery, setFilterQuery] = useState({ text: "", type: "" });
-
-  const [headerTableList, setHeaderTableList] = useState([]);
-  const [headerTablePropsList, setHeaderTablePropsList] = useState([]);
-
+export default function EstruturaTable({ tableList }) {
   //
-  //
-
-  const [filtersList, setFiltersList] = useState([])
-
-  function addNewFilterItem(type, text){
-
-    const newList = [...filtersList]
-    if(text === ""){
-      removeFilterItem(type)
-      return
+  const [filtersList, setFiltersList] = useState([]);
+  function addItemFilter(type, text) {
+    if (text === "") {
+      removeItemFilter(type);
     }
 
-    console.log(newList)
-    console.log(filtersList)
-    const newfilter = {type:type, text:text}
-    const isFind = false
-    // verificar se existe 
-    newList.forEach((item, index) => {
-      
-      console.log(" Alterou ")
-      console.log(" Item Type: " + item.type)
-      console.log(" NewFilter Type: " + newfilter.type)
-      if(newfilter.type == item.type){
-        console.log(" Entrouu ^^ ")
-        console.log(" Item Type: " + item.type)
-        console.log(" NewFilter Type: " + newfilter.type)
-        newList[index] = newfilter
-      }
-    })
+    const newfilter = { type: type, text: text };
+    const newFilterList = [...filtersList];
 
-    if(!isFind || newList == []){ newList.push(newfilter) }
+    let isFind = false;
+
+    newFilterList.forEach((item, index) => {
+      if (newfilter.type == item.type) {
+        newFilterList[index] = newfilter;
+        isFind = true;
+      }
+    });
+
+    if (!isFind) {
+      newFilterList.push(newfilter);
+    }
+
+    setFiltersList(newFilterList);
+  }
+  function removeItemFilter(type) {
+    const newFilterList = filtersList.filter(
+      (value) => value.type !== type && value
+    );
+    setFiltersList(newFilterList);
+    return;
+  }
+
+  //
+  const [uiTableList, setUiTableList] = useState([...tableList]);
+  useEffect(() => {
+    verifyIfHasFilter();
+    getFilterList();
+  }, [filtersList, tableList]);
+
+  function verifyIfHasFilter() {
+    if (filtersList.length == 0) {
+      setUiTableList(tableList);
+      return;
+    }
+  }
+  function getFilterList() {
+    let filterListProps = tableList;
+
+    filtersList.forEach((filterItem) => {
+      filterListProps = filterListByType(
+        filterItem.type,
+        filterItem.text,
+        filterListProps
+      );
+    });
     
-    // se nao
-
-    setFiltersList(newList)
+    setUiTableList(filterListProps);
   }
+  function filterListByType(filterType, filterText, mainList) {
+    
+    verifyIfHasFilterType(filterType, filterText, mainList)
 
-  function removeFilterItem(type){
-    const newList = filtersList.filter((value) => { 
-      if(value.type !== type){ 
-        return value
-      }
-    })
-    setFiltersList(newList)
+    return mainList.filter((item) => {
+      if (item[filterType] != null)
+        if (item[filterType].indexOf(filterText) != -1) return item;
+    });
   }
-
-  const [ filterTableList, setFilterTableList ] = useState(tableList)
-  useEffect(()=>{
-    if(filtersList.length == 0){
-      setFilterTableList(tableList)
-      return
-    }
-    let filterListProps = tableList
-    filtersList.map((item) => {
-      console.log("to dentro!")
-      console.log(item)
-      filterListProps = getFilterList(item.type, item.text, filterListProps)
-    })
-    setFilterTableList(filterListProps)
-  },[filtersList])
-
-
-
-  //
-  //
-
-  // Filtra  a Lista Inicial
-  //const filterTableList = getFilterList(filterQuery.type, filterQuery.text);
-
-  function getFilterList(filterType, filterText, mainList = tableList) {
-    const newTableList = [];
+  function verifyIfHasFilterType(filterType, filterText, mainList) {
     if (filterType == "" || filterText == "" || filterText == null || filterType == null) return mainList;
-    mainList.forEach((item) => {
-      if (item[filterType] != null) {
-        if (item[filterType].indexOf(filterText) != -1) newTableList.push(item);
-      }
-    });
-    return newTableList;
   }
-  const tableHashMap = createTableHashMap(filterTableList);
-  function createTableHashMap(objectList) {
-    if (objectList.length === 0) return headerTableList;
 
-    let headerTableHash = {};
-    objectList.forEach((item) => {
-      verifyPropsInItem(item, headerTableHash);
-    });
-
-    return headerTableHash;
+  //
+  const tablePropsHashMap = createTableHashMap(tableList);
+  function createTableHashMap(intitialTableList) {
+    let tablePropsHash = {
+      isChecked: "isChecked"
+    };
+    intitialTableList.forEach((item) => verifyPropsInItem(item, tablePropsHash));
+    return tablePropsHash;
   }
   function verifyPropsInItem(item, hashTableProps) {
     for (const propsName in item) {
-      if (hashTableProps[propsName] == null)
-        hashTableProps[propsName] = filterPropsNames(propsName);
+      hashTableProps[propsName] = filterPropsNames(propsName);
     }
   }
   function filterPropsNames(propsName) {
     let newWord = "";
-    propsName.split("").map((propsLetter) => {
+    propsName.split("").map((propsLetter, index) => {
+      if(index == 0){
+        newWord = propsLetter.toUpperCase()
+        return
+      }
+
       if (propsLetter === "-" || propsLetter.toUpperCase() === propsLetter) {
         newWord += " " + propsLetter;
       } else {
         newWord += propsLetter;
       }
     });
-    return newWord.toLowerCase();
+    return newWord;
   }
 
+  //
+
+  const [matrizTabelaPagination, setMatrizTabelaPagination] = useState([]);
+  const [indexPaginationActive, setIndexPaginationActive] = useState(0);
   useEffect(() => {
-    convertHashMapTitleToList(tableHashMap);
-    convertHashMapPropsToList(tableHashMap);
-  }, []);
-  // ex : Nota Fiscal
-  function convertHashMapTitleToList(hashMap) {
-    if (hashMap === headerTableList) {
-      //setHeaderTableList(headerTableList)
+    let matrizTabelaSection = [[]];
+    uiTableList.map((item, key) => {
+      if (key % 100 === 0) {
+        // ADD new Section
+        matrizTabelaSection[matrizTabelaSection.length] = [item];
+      } else {
+        // Add Item na lista antiga
+        matrizTabelaSection[matrizTabelaSection.length - 1].push(item);
+      }
+    });
+    setMatrizTabelaPagination(matrizTabelaSection);
+  }, [uiTableList]);
+  function movePaginationActiveToNext(nextToAll = false) {
+    if (
+      indexPaginationActive + 1 !== matrizTabelaPagination.length &&
+      !nextToAll
+    ) {
+      console.log(indexPaginationActive);
+      setIndexPaginationActive((state) => state + 1);
     } else {
+      setIndexPaginationActive(matrizTabelaPagination.lenght - 1);
+    }
+  }
+  function movePaginationActiveToBack(backToAll = false) {
+    if (backToAll || indexPaginationActive <= 0) {
+      setIndexPaginationActive(0);
+    } else {
+      setIndexPaginationActive((state) => --state);
+    }
+  }
+
+  //
+
+  const [tablePropsList, setTablePropsList] = useState([]);
+  const [tableTextPropsList, setTableTextPropsList] = useState([]);
+
+  useEffect(() => {
+    convertHashMapToPropsList(tablePropsHashMap);
+    convertHashMapToTextPropsList(tablePropsHashMap);
+  }, [tableList]);
+  // ex : Nota Fiscal
+  function convertHashMapToTextPropsList(hashMap) {
+    if (hashMap !== tablePropsList) {
       const newList = [];
       for (const props in hashMap) {
         newList.push(hashMap[props]);
       }
-      console.log("table Props List: ", newList);
-      setHeaderTableList(newList);
+      setTablePropsList(newList);
     }
   }
   // ex : notaFiscal
-  function convertHashMapPropsToList(hashMap) {
+  function convertHashMapToPropsList(hashMap) {
     const newList = [];
-    console.log(hashMap);
     for (const props in hashMap) {
       newList.push(props);
     }
-    console.log("table Header List: ", newList);
-    setHeaderTablePropsList(newList);
+    setTableTextPropsList(newList);
   }
+
+  // Verify If Has More Than 2 Itens Seleceted
+  const [itemsSelectedList, setItemsSelectedList] = useState([])
+  useEffect(()=>{
+    console.log(itemsSelectedList)
+  },[itemsSelectedList])
+  //const [isMoreThanTwoSelected, setIsMoreThanTwoSelected] = useState(false)
+  
+
 
   return (
     <EstruturaTableStyled>
+      <TableCaption
+        itemsSelectedList={itemsSelectedList}
+        setItemsSelectedList={setItemsSelectedList}
+      />
       <TableHeader
-        headerTableList={headerTableList}
-        headerTablePropsList={headerTablePropsList}
-        theme={theme}
-        filterQuery={filterQuery}
-        setFilterQuery={setFilterQuery}
-        addNewFilterItem={addNewFilterItem}
-        removeFilterItem={removeFilterItem}
+        tableTextPropsList={tableTextPropsList}
+        tablePropsList={tablePropsList}
+        addNewFilterItem={addItemFilter}
+        removeFilterItem={removeItemFilter}
       />
       <TableBody
-        filterTableList={filterTableList}
-        headerTablePropsList={headerTablePropsList}
+        filterTableList={uiTableList}
+        tableTextPropsList={tableTextPropsList}
+        itemsSelectedList={itemsSelectedList}
+        setItemsSelectedList={setItemsSelectedList}
+      />
+      <TableFooter
+        indexPaginationActive={indexPaginationActive}
+        setIndexPaginationActive={setIndexPaginationActive}
+        matrizPaginationLength={matrizTabelaPagination.length}
+        movePaginationActiveToBack={movePaginationActiveToBack}
+        movePaginationActiveToNext={movePaginationActiveToNext}
       />
     </EstruturaTableStyled>
   );
