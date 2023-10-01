@@ -1,4 +1,5 @@
 import { ItemTableHeaderStyle } from "./style";
+import { filterImage, closeFilterImage } from "../../../../constants/images";
 import { useState } from "react";
 
 export default function ItemTableHeader({
@@ -6,14 +7,7 @@ export default function ItemTableHeader({
   propsName,
   addNewFilterItem,
   removeFilterItem,
-  filterQuery,
 }) {
-  const filterImage = `/assets/icons/filter-${
-    theme.type === "dark" ? "dark" : "light"
-  }.png`;
-  const closeFilterImage = `/assets/icons/close-${
-    theme.type === "dark" ? "dark" : "light"
-  }.png`;
   const [filterIsOpen, setFilterIsOpen] = useState(false);
   const [filterField, setFilterField] = useState("");
 
@@ -28,34 +22,41 @@ export default function ItemTableHeader({
     }
   }
   function handlerFilter(e) {
-    console.log("eeee")
     addNewFilterItem( propsName, e.target.value )
     setFilterField(e.target.value);
   }
 
-  return (
-    <ItemTableHeaderStyle filterIsOpen={filterIsOpen}>
-      <div>
-        {propsName}
-        <button onClick={handlerFilterIsOpen}>
-          <img src={filterImage} alt={"Filter " + theme.type} title="filter" />
-        </button>
-      </div>
-      <div className="input">
-        <input
-          type="text"
-          placeholder={"Busque pelo " + propsName}
-          onChange={handlerFilter}
-          value={filterField}
-        />
-        <button onClick={handlerFilterIsOpen}>
-          <img
-            src={closeFilterImage}
-            alt={"Close Filter " + theme.type}
-            title="close"
+  if(propsName !== "isChecked"){
+    return(
+      <ItemTableHeaderStyle filterIsOpen={filterIsOpen}>
+        <div>
+          {propsName}
+          <button onClick={handlerFilterIsOpen}>
+            <img src={filterImage(theme)} alt={"Filter " + theme.type} title="filter" />
+          </button>
+        </div>
+        <div className="input">
+          <input
+            type="text"
+            placeholder={"Busque pelo " + propsName}
+            onChange={handlerFilter}
+            value={filterField}
           />
-        </button>
-      </div>
-    </ItemTableHeaderStyle>
-  );
+          <button onClick={handlerFilterIsOpen}>
+            <img
+              src={closeFilterImage(theme)}
+              alt={"Close Filter " + theme.type}
+              title="close"
+            />
+          </button>
+        </div>
+      </ItemTableHeaderStyle>
+    )
+  } else {
+    return(
+      <ItemTableHeaderStyle>
+        
+      </ItemTableHeaderStyle>
+    )
+  }
 }
