@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function ItemTableHeader({
   theme,
   propsName,
+  itemName,
   addNewFilterItem,
   removeFilterItem,
 }) {
@@ -15,7 +16,7 @@ export default function ItemTableHeader({
     if(filterIsOpen) {
       // reset
       setFilterField("")
-      removeFilterItem(propsName)
+      removeFilterItem(itemName)
       setFilterIsOpen(false);
     } else{
       setFilterIsOpen(true)
@@ -26,11 +27,11 @@ export default function ItemTableHeader({
     setFilterField(e.target.value);
   }
 
-  if(propsName !== "isChecked"){
+  if(itemName !== "isChecked"){
     return(
       <ItemTableHeaderStyle filterIsOpen={filterIsOpen}>
         <div>
-          {propsName}
+          {itemName}
           <button onClick={handlerFilterIsOpen}>
             <img src={filterImage(theme)} alt={"Filter " + theme.type} title="filter" />
           </button>
@@ -38,7 +39,7 @@ export default function ItemTableHeader({
         <div className="input">
           <input
             type="text"
-            placeholder={"Busque pelo " + propsName}
+            placeholder={"Busque pelo " + itemName}
             onChange={handlerFilter}
             value={filterField}
           />

@@ -20,8 +20,8 @@ export default function TableHeader({
               removeFilterItem={removeFilterItem}
               theme={theme}
               key={"th tableHeaderList " + id}
-              itemName={item}
-              propsName={tablePropsList[id]}
+              itemName={tablePropsList[id]}
+              propsName={item}
             />
           );
         })}
