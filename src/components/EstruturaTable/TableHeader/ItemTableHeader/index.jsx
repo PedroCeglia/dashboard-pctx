@@ -16,7 +16,7 @@ export default function ItemTableHeader({
     if(filterIsOpen) {
       // reset
       setFilterField("")
-      removeFilterItem(itemName)
+      removeFilterItem(propsName)
       setFilterIsOpen(false);
     } else{
       setFilterIsOpen(true)
