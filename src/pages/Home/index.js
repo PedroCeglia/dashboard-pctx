@@ -1,5 +1,4 @@
 import EstruturaTable from "../../components/EstruturaTable";
-import { tableList } from "../../constants/tableList";
 import { getEstoque } from "../../api/database";
 import { useState, useEffect } from "react";
 
