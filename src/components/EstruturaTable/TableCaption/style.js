@@ -6,6 +6,7 @@ export const TableCaptionStyle = styled.caption`
   display: block;
   position: sticky;
   top: 0;
+  left: 0;
   background-color: white;
 
   & > div {
