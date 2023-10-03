@@ -35,6 +35,10 @@ export const TablePaginationContainer = styled.div`
 
         cursor: pointer;
     }
+    div:nth-of-type(1){
+      background-color: rgba(0,0,0,.5) ;
+    }
+
     div:hover, button:hover{
         border: 1px solid rgba(255,255,255,.3);
         background-color: rgba(0,0,0,.5);
