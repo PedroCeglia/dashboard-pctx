@@ -4,7 +4,6 @@ import ItemTableHeader from "./ItemTableHeader";
 
 export default function TableHeader({
   tableTextPropsList,
-  tablePropsList,
   addNewFilterItem,
   removeFilterItem,
 }) {
@@ -20,7 +19,7 @@ export default function TableHeader({
               removeFilterItem={removeFilterItem}
               theme={theme}
               key={"th tableHeaderList " + id}
-              itemName={tablePropsList[id]}
+              itemName={tableTextPropsList[id]}
               propsName={item}
             />
           );
