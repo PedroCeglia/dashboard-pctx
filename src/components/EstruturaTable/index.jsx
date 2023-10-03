@@ -7,6 +7,12 @@ import TableFooter from "./TableFooter";
 import TableCaption from "./TableCaption";
 
 export default function EstruturaTable({ tableList }) {
+
+  console.log("Tabela Renderizou")
+
+  //
+  const [itemsSelectedList, setItemsSelectedList] = useState([])
+  
   //
   const [filtersList, setFiltersList] = useState([]);
   function addItemFilter(type, text) {
@@ -41,19 +47,8 @@ export default function EstruturaTable({ tableList }) {
   }
 
   //
-  const [uiTableList, setUiTableList] = useState([...tableList]);
-  useEffect(() => {
-    verifyIfHasFilter();
-    getFilterList();
-    console.log(filtersList)
-  }, [filtersList, tableList]);
+  const uiTableList = filtersList.length == 0 ? tableList : getFilterList();
 
-  function verifyIfHasFilter() {
-    if (filtersList.length == 0) {
-      setUiTableList(tableList);
-      return;
-    }
-  }
   function getFilterList() {
     let filterListProps = tableList;
 
@@ -65,7 +60,7 @@ export default function EstruturaTable({ tableList }) {
       );
     });
     
-    setUiTableList(filterListProps);
+    return filterListProps;
   }
   function filterListByType(filterType, filterText, mainList) {
     
@@ -113,12 +108,13 @@ export default function EstruturaTable({ tableList }) {
 
   //
 
-  const [matrizTabelaPagination, setMatrizTabelaPagination] = useState([]);
   const [indexPaginationActive, setIndexPaginationActive] = useState(0);
+
+  const matrizTabelaPagination = getMatrizTabelaPagination();  
   const listaFinal = matrizTabelaPagination[indexPaginationActive] != null ? matrizTabelaPagination[indexPaginationActive] : []
 
-  useEffect(() => {
-    let matrizTabelaSection = [];
+  function getMatrizTabelaPagination(){
+    const matrizTabelaSection = [];
     uiTableList.map((item, key) => {
       if (key % 100 === 0) {
         // ADD new Section
@@ -128,8 +124,8 @@ export default function EstruturaTable({ tableList }) {
         matrizTabelaSection[matrizTabelaSection.length - 1].push(item);
       }
     });
-    setMatrizTabelaPagination(matrizTabelaSection);
-  }, [uiTableList]);
+    return matrizTabelaSection;
+  }
   function movePaginationActiveToNext(nextToAll = false) {
     if (
       indexPaginationActive + 1 !== matrizTabelaPagination.length &&
@@ -150,46 +146,25 @@ export default function EstruturaTable({ tableList }) {
     }
   }
 
-  useEffect(()=>{
-    console.log("Lista Final Index: " + indexPaginationActive)
-    console.log(listaFinal)
-  },[listaFinal])
-
   //
 
-  const [tablePropsList, setTablePropsList] = useState([]);
-  const [tableTextPropsList, setTableTextPropsList] = useState([]);
-
-  useEffect(() => {
-    convertHashMapToPropsList(tablePropsHashMap);
-    convertHashMapToTextPropsList(tablePropsHashMap);
-  }, [tableList]);
-  // ex : Nota Fiscal
+  const tablePropsList = convertHashMapToPropsList(tablePropsHashMap)
+  const tableTextPropsList = convertHashMapToTextPropsList(tablePropsHashMap)
+ 
   function convertHashMapToTextPropsList(hashMap) {
-    if (hashMap !== tablePropsList) {
       const newList = [];
       for (const props in hashMap) {
         newList.push(hashMap[props]);
       }
-      setTablePropsList(newList);
-    }
+      return newList;
   }
-  // ex : notaFiscal
   function convertHashMapToPropsList(hashMap) {
     const newList = [];
     for (const props in hashMap) {
       newList.push(props);
     }
-    setTableTextPropsList(newList);
+    return newList;
   }
-
-  // Verify If Has More Than 2 Itens Seleceted
-  const [itemsSelectedList, setItemsSelectedList] = useState([])
-  useEffect(()=>{
-    console.log(itemsSelectedList)
-  },[itemsSelectedList])
-  //const [isMoreThanTwoSelected, setIsMoreThanTwoSelected] = useState(false)
-  
 
 
   return (
@@ -200,13 +175,12 @@ export default function EstruturaTable({ tableList }) {
       />
       <TableHeader
         tableTextPropsList={tableTextPropsList}
-        tablePropsList={tablePropsList}
         addNewFilterItem={addItemFilter}
         removeFilterItem={removeItemFilter}
       />
       <TableBody
         filterTableList={listaFinal}
-        tableTextPropsList={tableTextPropsList}
+        tableTextPropsList={tablePropsList}
         itemsSelectedList={itemsSelectedList}
         setItemsSelectedList={setItemsSelectedList}
       />
