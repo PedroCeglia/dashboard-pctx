@@ -12,11 +12,12 @@ export const AuthSingInStyle = styled.div`
   form {
     padding: 20px;
     width: 90%;
-    min-height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 30px;
+
   }
 
   button {
@@ -27,10 +28,18 @@ export const AuthSingInStyle = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
   }
-  button:nth-of-type(2) {
+  a {
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 20px;
     background-color: transparent;
     border: none;
+    color: rgba(0, 0, 0, 0.9);
   }
+  a:hover {
+    color: rgba(0, 0, 200, 0.4);
+  }
+
 
 `;
 
