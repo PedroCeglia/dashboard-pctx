@@ -175,6 +175,7 @@ export default function EstruturaTable({ tableList }) {
       />
       <TableHeader
         tableTextPropsList={tableTextPropsList}
+        tablePropsList={tablePropsList}
         addNewFilterItem={addItemFilter}
         removeFilterItem={removeItemFilter}
       />
