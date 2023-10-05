@@ -4,6 +4,8 @@ import EstruturaPagina from '../components/EstruturaPagina'
 // import Pages
 import Home from '../pages/Home'
 import AuthPage from '../pages/AuthPage'
+import AddEstoque from '../pages/AddEstoque'
+import Estoque from '../pages/Estoque'
 
 export default function Rotas(){
     return(
@@ -11,15 +13,15 @@ export default function Rotas(){
             <EstruturaPagina>
                 <Routes>
                     <Route path='*' element={<h1>Not Found</h1>}/>
-                    <Route path='/auth' element={<AuthPage/>}/>
+                    <Route path='/auth/*' element={<AuthPage/>}/>
 
                     <Route index element={<Home/>}/>
                     <Route path='/calendario' element={<h1>calendario</h1>}/>
                     <Route path='/help' element={<h1>Help</h1>}/>
                     <Route path='/suporte' element={<h1>Suporte</h1>}/>
 
-                    <Route path='/estoque' element={<h1>Etoque</h1>}>
-                        <Route path='/estoque/add' element={<h1>Adicionar</h1>}/>
+                    <Route path='/estoque' element={<Estoque/>}>
+                        <Route path='add' element={<AddEstoque/>}/>
                     </Route>
                     
                     <Route path='/registros' element={<h1>Registro</h1>}>
