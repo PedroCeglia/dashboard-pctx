@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { AuthSingInStyle, InputContainerStyle } from "./style";
+import { Link } from "react-router-dom";
 
-export default function AuthSingIn({ isCreating = true }) {
+export default function AuthSingIn({ isCreating }) {
+
   const [nameField, setNameField] = useState("");
   const [emailField, setEmailField] = useState("");
   const [passwordField, setPasswordField] = useState("");
@@ -85,9 +87,9 @@ export default function AuthSingIn({ isCreating = true }) {
       <button onClick={isCreating ? createAccount : loginAccount}>
         Criar Conta
       </button>
-      <button>
+      <Link to={isCreating ? "/auth" : "/auth/sing-in"}>
         {isCreating ? "Você Ja possui uma conta" : "Não Pussue uma conta?"}
-      </button>
+      </Link>
     </AuthSingInStyle>
   );
 }
