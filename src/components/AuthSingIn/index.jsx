@@ -88,7 +88,7 @@ export default function AuthSingIn({ isCreating }) {
         Criar Conta
       </button>
       <Link to={isCreating ? "/auth" : "/auth/sing-in"}>
-        {isCreating ? "Você Ja possui uma conta" : "Não Pussue uma conta?"}
+        {isCreating ? "Você já possui uma conta ?" : "Não possui uma conta ?"}
       </Link>
     </AuthSingInStyle>
   );
