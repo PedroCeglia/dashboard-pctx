@@ -3,6 +3,7 @@ import EstruturaPagina from '../components/EstruturaPagina'
 
 // import Pages
 import Home from '../pages/Home'
+import AuthPage from '../pages/AuthPage'
 
 export default function Rotas(){
     return(
@@ -10,6 +11,7 @@ export default function Rotas(){
             <EstruturaPagina>
                 <Routes>
                     <Route path='*' element={<h1>Not Found</h1>}/>
+                    <Route path='/auth' element={<AuthPage/>}/>
 
                     <Route index element={<Home/>}/>
                     <Route path='/calendario' element={<h1>calendario</h1>}/>
