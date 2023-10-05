@@ -4,7 +4,7 @@ import styled from "styled-components"
 export const TableHeaderStyle = styled.thead`
   width: 100%;
   position: sticky;
-  top: 100px;
+  top: 70px;
   z-index: 1;
 
   background-color: white;
