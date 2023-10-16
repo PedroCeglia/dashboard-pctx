@@ -1,0 +1,74 @@
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <!-- Dados do emitente (Empresa A) -->
+    <emit>
+      <xNome>SportsStore Ltda.</xNome> <!-- Razão Social do emitente -->
+      <CNPJ>12345678000100</CNPJ> <!-- CNPJ do emitente -->
+      <!-- Endereço do emitente -->
+      <enderEmit>
+        <xLgr>Rua das Esportes, 123</xLgr>
+        <xCpl>Cidade Esportiva</xCpl>
+        <xMun>Estado</xMun>
+        <UF>UF</UF>
+        <CEP>12345-678</CEP>
+        <cMun>1234567</cMun>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderEmit>
+      <IE>123456789</IE> <!-- Inscrição Estadual do emitente -->
+      <!-- Outras informações do emitente -->
+    </emit>
+    <!-- Dados do destinatário (Empresa B) -->
+    <dest>
+      <xNome>SportsWear Comércio e Distribuição Ltda.</xNome> <!-- Razão Social do destinatário -->
+      <CNPJ>98765432000199</CNPJ> <!-- CNPJ do destinatário -->
+      <!-- Endereço do destinatário -->
+      <enderDest>
+        <xLgr>Avenida do Futebol, 456</xLgr>
+        <xCpl>Bairro Esportivo</xCpl>
+        <xMun>Estado</xMun>
+        <UF>UF</UF>
+        <CEP>98765-432</CEP>
+        <cMun>9876543</cMun>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <IE>987654321</IE> <!-- Inscrição Estadual do destinatário -->
+      <!-- Outras informações do destinatário -->
+    </dest>
+    <!-- Dados da NF-e -->
+    <ide>
+      <nNF>202310001</nNF> <!-- Número da NF-e -->
+      <serie>001</serie> <!-- Série da NF-e -->
+      <dhEmi>2023-10-10T00:00:00-03:00</dhEmi> <!-- Data e hora de emissão da NF-e -->
+      <!-- Outras informações da NF-e -->
+    </ide>
+    <!-- Produtos -->
+    <det nItem="1">
+      <prod>
+        <xProd>Camisa de Time A</xProd> <!-- Descrição do Produto -->
+        <cProd>001</cProd> <!-- Código do Produto -->
+        <qCom>10</qCom> <!-- Quantidade do Produto -->
+        <vUnCom>50.00</vUnCom> <!-- Valor Unitário do Produto -->
+        <vProd>500.00</vProd> <!-- Valor Total do Produto -->
+      </prod>
+      <!-- Outras informações do produto -->
+    </det>
+    <det nItem="2">
+      <!-- Informações do segundo produto -->
+    </det>
+    <!-- Outros produtos -->
+    <!-- Totais -->
+    <total>
+      <ICMSTot>
+        <vProd>2850.00</vProd> <!-- Valor Total dos Produtos -->
+        <vFrete>200.00</vFrete> <!-- Valor do Frete -->
+        <vNF>3050.00</vNF> <!-- Valor Total da NF-e -->
+      </ICMSTot>
+    </total>
+    <!-- Informações Adicionais -->
+    <infAdic>
+      <infCpl>Forma de Pagamento: Faturado Prazo de Pagamento: 30 dias Transportadora: Transporte Rápido Ltda. Placa do Veículo: XYZ-1234</infCpl> <!-- Informações Adicionais -->
+    </infAdic>
+  </infNFe>
+</NFe>

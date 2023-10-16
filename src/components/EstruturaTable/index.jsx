@@ -5,8 +5,9 @@ import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
 import TableFooter from "./TableFooter";
 import TableCaption from "./TableCaption";
+import Filter from "./Controller/Filter";
 
-export default function EstruturaTable({ tableList }) {
+export default function EstruturaTable({ tableList, hasFilter = true, hasPagination = true }) {
 
   console.log("Tabela Renderizou")
 
@@ -107,6 +108,23 @@ export default function EstruturaTable({ tableList }) {
   }
 
   //
+  const tablePropsList = convertHashMapToPropsList(tablePropsHashMap)
+  const tableTextPropsList = convertHashMapToTextPropsList(tablePropsHashMap)
+ 
+  function convertHashMapToTextPropsList(hashMap) {
+      const newList = [];
+      for (const props in hashMap) {
+        newList.push(hashMap[props]);
+      }
+      return newList;
+  }
+  function convertHashMapToPropsList(hashMap) {
+    const newList = [];
+    for (const props in hashMap) {
+      newList.push(props);
+    }
+    return newList;
+  }
 
   const [indexPaginationActive, setIndexPaginationActive] = useState(0);
 
@@ -148,27 +166,12 @@ export default function EstruturaTable({ tableList }) {
 
   //
 
-  const tablePropsList = convertHashMapToPropsList(tablePropsHashMap)
-  const tableTextPropsList = convertHashMapToTextPropsList(tablePropsHashMap)
- 
-  function convertHashMapToTextPropsList(hashMap) {
-      const newList = [];
-      for (const props in hashMap) {
-        newList.push(hashMap[props]);
-      }
-      return newList;
-  }
-  function convertHashMapToPropsList(hashMap) {
-    const newList = [];
-    for (const props in hashMap) {
-      newList.push(props);
-    }
-    return newList;
-  }
+
 
 
   return (
     <EstruturaTableStyled>
+      <Filter tableList={tableList}/>
       <TableCaption
         itemsSelectedList={itemsSelectedList}
         setItemsSelectedList={setItemsSelectedList}

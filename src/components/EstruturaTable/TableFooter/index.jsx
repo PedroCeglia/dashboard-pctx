@@ -19,9 +19,17 @@ export default function TableFooter({
   return (
     <TableFooterStyle>
       <tr>
+      { matrizPaginationLength > 3 && <> Ola Mundo </> }
+      { matrizPaginationLength < 2 && <> Ola Mundo 22</> }
+      { ( matrizPaginationLength <= 3 && matrizPaginationLength > 1 ) && <> Ola Mundo 33</> }
+
         <td>
           <TablePaginationContainer>
-            <button onClick={() => { movePaginationActiveToBack(true) }}>
+            <button
+              onClick={() => {
+                movePaginationActiveToBack(true);
+              }}
+            >
               <img
                 src={tablePaginationBackAll(theme)}
                 alt="Table Pagination Back All"
@@ -34,37 +42,60 @@ export default function TableFooter({
               />
             </button>
 
-            { /* Has After */
+            {
+              /* Has After */
               indexPaginationActive > 0 && (
-                <button onClick={()=>{ setIndexPaginationActive(state => state - 1)}}>{indexPaginationActive}</button>
-              ) 
+                <button
+                  onClick={() => {
+                    setIndexPaginationActive((state) => state - 1);
+                  }}
+                >
+                  {indexPaginationActive}
+                </button>
+              )
             }
 
             <div>{++indexPaginationActive}</div>
 
-            { /* Has Before */
+            {
+              /* Has Before */
               indexPaginationActive < matrizPaginationLength && (
-                <button onClick={()=>{ setIndexPaginationActive(state => state + 1)}}>{indexPaginationActive + 1}</button>
-              ) 
+                <button
+                  onClick={() => {
+                    setIndexPaginationActive((state) => state + 1);
+                  }}
+                >
+                  {indexPaginationActive + 1}
+                </button>
+              )
             }
 
-            { /* has more than 2 */
+            {
+              /* has more than 2 */
               indexPaginationActive + 1 < matrizPaginationLength && (
                 <>
                   <div>...</div>
-                  <button onClick={()=>{ setIndexPaginationActive(matrizPaginationLength - 1)}}>{matrizPaginationLength}</button>
+                  <button
+                    onClick={() => {
+                      setIndexPaginationActive(matrizPaginationLength - 1);
+                    }}
+                  >
+                    {matrizPaginationLength}
+                  </button>
                 </>
-              ) 
+              )
             }
-            <button
-              onClick={movePaginationActiveToNext}
-            >
+            <button onClick={movePaginationActiveToNext}>
               <img
                 src={tablePaginationNextOne(theme)}
                 alt="Table Pagination Next One"
               />
             </button>
-            <button onClick={() => { movePaginationActiveToNext(true) }} >
+            <button
+              onClick={() => {
+                movePaginationActiveToNext(true);
+              }}
+            >
               <img
                 src={tablePaginationNextAll(theme)}
                 alt="Table Pagination Next All"

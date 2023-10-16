@@ -1,0 +1,41 @@
+export default function Controller({
+  itemsSelectedList,
+  setItemsSelectedList,
+  tableTextPropsList,
+  tablePropsList,
+  addItemFilter,
+  removeItemFilter,
+  listaFinal,
+  indexPaginationActive,
+  setIndexPaginationActive,
+  movePaginationActiveToBack,
+  movePaginationActiveToNext
+}) {
+  return (
+    <EstruturaTableStyled>
+      <TableCaption
+        itemsSelectedList={itemsSelectedList}
+        setItemsSelectedList={setItemsSelectedList}
+      />
+      <TableHeader
+        tableTextPropsList={tableTextPropsList}
+        tablePropsList={tablePropsList}
+        addNewFilterItem={addItemFilter}
+        removeFilterItem={removeItemFilter}
+      />
+      <TableBody
+        filterTableList={listaFinal}
+        tableTextPropsList={tablePropsList}
+        itemsSelectedList={itemsSelectedList}
+        setItemsSelectedList={setItemsSelectedList}
+      />
+      <TableFooter
+        indexPaginationActive={indexPaginationActive}
+        setIndexPaginationActive={setIndexPaginationActive}
+        matrizPaginationLength={matrizTabelaPagination.length}
+        movePaginationActiveToBack={movePaginationActiveToBack}
+        movePaginationActiveToNext={movePaginationActiveToNext}
+      />
+    </EstruturaTableStyled>
+  );
+}
