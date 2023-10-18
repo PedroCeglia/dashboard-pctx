@@ -1,7 +1,7 @@
 import Table from "../../../../components/Table";
-import { TotalAmountStyle } from "./style";
+import { EmitenteRemetenteStyle } from "./style";
 
-export default function TotalAmount() {
+export default function EmitenteRemetente() {
   const listaEmitenteRemetente = [
     {
       type: "emitente",
@@ -34,7 +34,7 @@ export default function TotalAmount() {
   ];
 
   return (
-    <TotalAmountStyle>
+    <EmitenteRemetenteStyle>
       <Table
         tableList={listaEmitenteRemetente}
         hasFooter={false}
@@ -42,7 +42,7 @@ export default function TotalAmount() {
         hasFilter={false}
         hasSelectItem={false}
       />
-    </TotalAmountStyle>
+    </EmitenteRemetenteStyle>
   );
 }
 
