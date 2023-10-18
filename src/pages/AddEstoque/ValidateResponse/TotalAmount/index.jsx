@@ -1,4 +1,4 @@
-import EstruturaTable from "../../../../components/EstruturaTable";
+import Table from "../../../../components/Table";
 import { TotalAmountStyle } from "./style";
 
 export default function TotalAmount() {
@@ -35,7 +35,14 @@ export default function TotalAmount() {
 
   return (
     <TotalAmountStyle>
-      <EstruturaTable tableList={listaEmitenteRemetente} />
+      <Table
+        tableList={listaEmitenteRemetente}
+        hasFooter={false}
+        hasCaption={false}
+        hasFilter={false}
+        hasSelectItem={false}
+      />
     </TotalAmountStyle>
   );
 }
+
