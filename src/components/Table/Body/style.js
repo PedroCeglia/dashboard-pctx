@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const TableBodyStyle = styled.tbody``;
+export const TableBodyStyle = styled.tbody`
+`;
 
 export const ButtonSelectStyle = styled.button`
   width: 15px;
@@ -14,7 +15,8 @@ export const ButtonSelectStyle = styled.button`
   position: relative;
 `;
 
-export const ItemTableRowStyle = styled.tr`
+export const ItemRowStyle = styled.tr`
+  min-height: 60px;
   border-bottom: 1px solid black;
   background-color: ${({ isActive }) =>
     isActive ? "rgba(0,100,200,.3)" : "rgba(0,0,0,.3)"};
