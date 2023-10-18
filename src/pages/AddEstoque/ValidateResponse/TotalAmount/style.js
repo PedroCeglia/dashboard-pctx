@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const TotalAmountStyle = styled.div`
-    width: 500px;
-    padding: 20px;
+    width: 100%;
     overflow: hidden;
-    height: 400px;
 `
