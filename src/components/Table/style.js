@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
-export const EstruturaTableStyled = styled.table`
-  display: inline-block;
+export const TableStyled = styled.table`
   background-color: rgba(255, 255, 255, 0.8);
 
-  height: 100%;
+  display: inline-block;
+  height: ${({ height }) => height};
   width: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
 
   overflow: auto;
 
   border-collapse: collapse;
-  position: relative;
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -21,9 +22,7 @@ export const EstruturaTableStyled = styled.table`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
   }
-
 `;
-
