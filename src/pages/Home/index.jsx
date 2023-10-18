@@ -9,7 +9,7 @@ export default function Home() {
   },[])
   return (
     <>
-      <Table tableList={estoqueList} hasPagination={false}/>
+      <Table tableList={estoqueList}/>
     </>
   );
 }
