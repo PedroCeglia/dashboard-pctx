@@ -2,10 +2,10 @@ import { TableStyled } from "./style";
 
 import TableContexts from "./Contexts";
 
-import Caption from "./Caption";
-import Header from "./Header";
-import Body from "./Body";
-import Footer from "./Footer";
+import TableCaption from "./Caption";
+import TableHeader from "./Header";
+import TableBody from "./Body";
+import TableFooter from "./Footer";
 
 export default function TesteTable({
   tableList,
@@ -24,18 +24,17 @@ export default function TesteTable({
     <TableStyled height={height}>
       <TableContexts tableList={tableList} hasSelectItem={hasSelectItem}>
         {hasCaption && (
-          <Caption
+          <TableCaption
             hasSelectItem={hasSelectItem}
             hasAddItem={hasAddItem}
             hasRemoveItem={hasRemoveItem}
           />
         )}
 
-        <Header hasFilter={hasFilter} hasCaption={hasCaption} />
+        <TableHeader hasFilter={hasFilter} hasCaption={hasCaption} />
+        <TableBody hasSelectItem={hasSelectItem} />
 
-        <Body hasSelectItem={hasSelectItem} />
-
-        {hasFooter && <Footer hasPagination={hasPagination} />}
+        {hasFooter && <TableFooter hasPagination={hasPagination} />}
       </TableContexts>
     </TableStyled>
   );
