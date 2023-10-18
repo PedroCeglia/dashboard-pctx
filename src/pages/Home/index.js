@@ -1,4 +1,4 @@
-import EstruturaTable from "../../components/EstruturaTable";
+import Table from "../../components/Table";
 import { getEstoque } from "../../api/database";
 import { useState, useEffect } from "react";
 
@@ -9,7 +9,7 @@ export default function Home() {
   },[])
   return (
     <>
-      <EstruturaTable tableList={estoqueList} />
+      <Table tableList={estoqueList} hasPagination={false}/>
     </>
   );
 }
