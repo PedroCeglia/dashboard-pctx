@@ -1,28 +1,26 @@
 import { TableHeaderStyle } from "./style";
 import { useThemeContext } from "../../../contexts/ThemeContext";
-import ItemTableHeader from "./ItemTableHeader";
+import ItemHeader from "./Item";
+import {useTypingContext} from "../Contexts/Typing"
 
 export default function TableHeader({
-  tableTextPropsList,
-  tablePropsList,
-  addNewFilterItem,
-  removeFilterItem,
+  hasFilter = true,
+  hasCaption = true,
 }) {
   const { theme } = useThemeContext();
+  const {tableTextPropsList, tablePropsList} = useTypingContext()
 
   return (
-    <TableHeaderStyle>
+    <TableHeaderStyle hasCaption={hasCaption}>
       <tr>
         {tableTextPropsList.map((item, id) => {
           return (
-            <ItemTableHeader
-              addNewFilterItem={addNewFilterItem}
-              removeFilterItem={removeFilterItem}
+            <ItemHeader
               theme={theme}
               key={"th tableHeaderList " + id}
               itemName={item}
               propsName={tablePropsList[id]}
-              
+              hasFilter={hasFilter}
             />
           );
         })}

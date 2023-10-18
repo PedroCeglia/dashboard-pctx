@@ -2,18 +2,24 @@ import styled from "styled-components";
 
 export const TableCaptionStyle = styled.caption`
   z-index: 10;
-  width: 100%;
-  display: block;
+  background-color: white;
+
   position: sticky;
   top: 0;
   left: 0;
-  background-color: white;
+  display: inline-block;
+  width: 100%;
+
+
+  
 
   & > div {
+    
     height: 70px;
     padding-top: 10px;
-    width: 100%;
     padding: 20px;
+    width: 100%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;

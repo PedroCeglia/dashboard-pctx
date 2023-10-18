@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
-export const ItemTableHeaderStyle = styled.th`
-    min-width: 50px;
+export const ItemStyle = styled.th`
+    padding: 20px;
+    width: 100%;
+    
+    span {
+        display: block;
+        min-width:15vw;
+    }
     div{
         width: 100%;
         display: flex;
