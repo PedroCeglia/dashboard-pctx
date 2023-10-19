@@ -8,7 +8,7 @@ import TableBody from "./Body";
 import TableFooter from "./Footer";
 
 export default function TesteTable({
-  tableList,
+  tableList=[],
   hasPagination = false,
   hasFilter = false,
   hasFooter = false,
