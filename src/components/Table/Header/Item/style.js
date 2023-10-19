@@ -7,6 +7,7 @@ export const ItemStyle = styled.th`
     span {
         display: block;
         min-width:15vw;
+        word-spacing: 2px;
     }
     div{
         width: 100%;
