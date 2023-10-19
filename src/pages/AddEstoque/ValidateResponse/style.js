@@ -19,5 +19,13 @@ export const ValidateResponseStyle = styled.div`
         background-color: rgba(255,255,255,.7);
         border: 1px solid rgba(0,0,0,.8);
         margin: 0 0 40px ;
+        cursor: pointer;
+        transition: all .4s;
+    }
+
+    button:hover{
+        background-color: rgba(211,211,211,.7);
+
+        transform: scale(1.1);
     }
 `
