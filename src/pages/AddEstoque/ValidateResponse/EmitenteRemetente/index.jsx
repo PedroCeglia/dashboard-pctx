@@ -37,10 +37,8 @@ export default function EmitenteRemetente() {
     <EmitenteRemetenteStyle>
       <Table
         tableList={listaEmitenteRemetente}
-        hasFooter={false}
-        hasCaption={false}
-        hasFilter={false}
-        hasSelectItem={false}
+        hasCaption={true}
+        captionTitle="Emitente - Remetente"
       />
     </EmitenteRemetenteStyle>
   );

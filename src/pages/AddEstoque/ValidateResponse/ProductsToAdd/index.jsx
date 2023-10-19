@@ -96,7 +96,11 @@ export default function ProductsToAdd() {
   ];
   return (
     <ProductsToAddStyle>
-      <Table tableList={tableList}/>
+      <Table
+        tableList={tableList}
+        hasCaption={true}
+        captionTitle="Produtos"
+      />
     </ProductsToAddStyle>
   );
 }
