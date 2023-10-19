@@ -5,7 +5,7 @@ export const NavBarStyle = styled.nav`
   min-width: ${({ isActive }) => (isActive ? "250px" : "50px")};
   width: ${({ isActive }) => (isActive ? "10vw" : "50px")};
   min-height: 100vh;
-  transition: width .3s;
+  transition: width .4s;
   background-color: ${({ theme }) => theme.backgroundColor[2]};
 
   position: fixed;

@@ -8,7 +8,7 @@ export const EstruturaPaginaStyle = styled.div`
 
     position: relative;
     
-    background-color: ${({theme}) => theme.backgroundColor[1] };
+    background-color: ${({theme}) => theme.backgroundColor[2] };
     color: ${({theme}) => theme.color.c1 };
 
     display: flex;
@@ -25,8 +25,7 @@ export const ConteudoPaginaStyle = styled.main`
     top: 0;
     right: 0;
 
-    transition: width .3s;
-    background-color: ${({theme}) => theme.backgroundColor[1] };
+    transition: width .4s;
 
     display: flex;
     justify-content: center;
