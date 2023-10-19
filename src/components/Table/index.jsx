@@ -13,6 +13,7 @@ export default function TesteTable({
   hasFilter = false,
   hasFooter = false,
   hasCaption = false,
+  captionTitle = "title",
   hasSelectItem = false,
   hasAddItem = false,
   hasRemoveItem = false,
@@ -25,6 +26,7 @@ export default function TesteTable({
       <TableContexts tableList={tableList} hasSelectItem={hasSelectItem}>
         {hasCaption && (
           <TableCaption
+            title={captionTitle}
             hasSelectItem={hasSelectItem}
             hasAddItem={hasAddItem}
             hasRemoveItem={hasRemoveItem}

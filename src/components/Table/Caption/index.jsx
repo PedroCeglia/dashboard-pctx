@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useItemsSelectContext } from "../Contexts/ItemsSelect";
 
 export default function TableCaption({
+  title="Estoque",
   hasAddItem,
   hasRemoveItem,
   hasSelectItem,
@@ -12,7 +13,7 @@ export default function TableCaption({
   return (
     <TableCaptionStyle>
       <div>
-        <h2>Estoque </h2>
+        <h2>{ title }</h2>
         {hasSelectItem && (
           <div>
             {itemsSelectedList.length > 1 && (
