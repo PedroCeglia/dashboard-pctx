@@ -20,11 +20,12 @@ export const AddEstoqueContentStyle = styled.div`
   height: ${({isLoad}) => true ? "100%" : "50%" };
   transition: all .5s;
 
+  overflow: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
 `;
