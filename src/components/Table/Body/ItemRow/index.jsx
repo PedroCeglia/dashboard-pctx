@@ -1,7 +1,6 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ItemRowStyle, ButtonSelectStyle } from "../style";
-import { useState } from "react";
-import { useItemsSelectContext } from "../../Contexts/ItemsSelect";
+import { useItemsSelectContext } from "../../../../contexts/Table/ItemsSelect";
 
 export default function Item({
   children,
