@@ -5,8 +5,8 @@ import {
   tablePaginationNextAll,
   tablePaginationNextOne,
 } from "../../../constants/images";
-import { useThemeContext } from "../../../contexts/ThemeContext";
-import { usePaginationContext } from "../Contexts/Pagination";
+import { useThemeContext } from "../../../contexts/Theme";
+import { usePaginationContext } from "../../../contexts/Table/Pagination";
 
 export default function TableFooter({ hasPagination = true }) {
   const { theme } = useThemeContext();

@@ -2,7 +2,7 @@ import { ItemStyle } from "./style";
 import { useState } from "react";
 
 import { filterImage, closeFilterImage } from "../../../../constants/images";
-import { useFilterContext } from "../../Contexts/Filter";
+import { useFilterContext } from "../../../../contexts/Table/Filter";
 
 export default function ItemTableHeader({
   theme,

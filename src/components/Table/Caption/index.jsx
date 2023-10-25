@@ -1,6 +1,6 @@
 import { TableCaptionStyle } from "./style";
 import { Link } from "react-router-dom";
-import { useItemsSelectContext } from "../Contexts/ItemsSelect";
+import { useItemsSelectContext } from "../../../contexts/Table/ItemsSelect";
 
 export default function TableCaption({
   title="Estoque",

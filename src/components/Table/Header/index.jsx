@@ -1,14 +1,12 @@
 import { TableHeaderStyle } from "./style";
-import { useThemeContext } from "../../../contexts/ThemeContext";
-import ItemHeader from "./Item";
-import {useTypingContext} from "../Contexts/Typing"
+import { useThemeContext } from "../../../contexts/Theme";
+import { useTypingContext } from "../../../contexts/Table/Typing";
 
-export default function TableHeader({
-  hasFilter = true,
-  hasCaption = true,
-}) {
+import ItemHeader from "./Item";
+
+export default function TableHeader({ hasFilter = true, hasCaption = true }) {
   const { theme } = useThemeContext();
-  const {tableTextPropsList, tablePropsList} = useTypingContext()
+  const { tableTextPropsList, tablePropsList } = useTypingContext();
 
   return (
     <TableHeaderStyle hasCaption={hasCaption}>
