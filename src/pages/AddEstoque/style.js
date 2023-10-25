@@ -16,8 +16,8 @@ export const AddEstoqueContainerStyle = styled.div`
 `;
 
 export const AddEstoqueContentStyle = styled.div`
-  width: ${({isLoad}) => true ? "100%" : "50%" };
-  height: ${({isLoad}) => true ? "100%" : "50%" };
+  width: ${({isLoad}) => isLoad ? "100%" : "50%" };
+  height: ${({isLoad}) => isLoad ? "100%" : "50%" };
   transition: all .5s;
 
   overflow: auto;
