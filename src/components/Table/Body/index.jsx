@@ -1,12 +1,12 @@
 import { TableBodyStyle } from "./style";
+import { usePaginationContext } from "../../../contexts/Table/Pagination";
+import { useTypingContext } from "../../../contexts/Table/Typing";
+
 import ItemRow from "./ItemRow";
-import { usePaginationContext } from "../Contexts/Pagination";
-import { useTypingContext } from "../Contexts/Typing";
 
 export default function TableBody({ hasSelectItem }) {
   const { listaFinal } = usePaginationContext();
   const { tablePropsList } = useTypingContext();
-  console.log(tablePropsList);
   return (
     <TableBodyStyle>
       {listaFinal.map((item, id) => {
