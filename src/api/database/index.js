@@ -1,6 +1,6 @@
 export async function getEstoque(setEstoqueList) {
     try {
-      const response = await fetch("http://localhost:5000/estoque");
+      const response = await fetch("http://localhost:5001/estoque");
   
       if (!response.ok) {
         throw new Error("Erro na requisição: " + response.status);
@@ -12,6 +12,7 @@ export async function getEstoque(setEstoqueList) {
     } catch (error) {
       // Trate os erros aqui de acordo com as necessidades do seu aplicativo.
       console.error("Error: " + error.message);
+      setEstoqueList([])
       throw error; // Re-lança o erro para que ele possa ser tratado no componente Home
     }
 }
