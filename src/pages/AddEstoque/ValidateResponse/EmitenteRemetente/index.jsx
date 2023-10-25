@@ -1,7 +1,7 @@
 import Table from "../../../../components/Table";
 import { EmitenteRemetenteStyle } from "./style";
 
-export default function EmitenteRemetente() {
+export default function EmitenteRemetente({emitente, destinatario}) {
   const listaEmitenteRemetente = [
     {
       type: "emitente",
@@ -36,7 +36,7 @@ export default function EmitenteRemetente() {
   return (
     <EmitenteRemetenteStyle>
       <Table
-        tableList={listaEmitenteRemetente}
+        tableList={[emitente, destinatario]}
         hasCaption={true}
         captionTitle="Emitente - Remetente"
       />

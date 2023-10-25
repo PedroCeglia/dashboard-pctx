@@ -1,16 +1,16 @@
 import { ProductsToAddStyle } from "./style";
 import Table from "../../../../components/Table";
 
-export default function ProductsToAdd() {
+export default function ProductsToAdd({productsList=[]}) {
   const tableList = [
     {
+      xProd: "RAW MAGNETIC TRAY DISPLAY",
       NCM: "8306.29.00",
       cProd: "13858",
       qCom: "20",
       vIPI: "1.97",
       vProd: "600.65",
       vUnCom: "30.03",
-      xProd: "RAW MAGNETIC TRAY DISPLAY",
     },
     {
       NCM: "8306.29.00",
@@ -97,7 +97,7 @@ export default function ProductsToAdd() {
   return (
     <ProductsToAddStyle>
       <Table
-        tableList={tableList}
+        tableList={productsList}
         hasCaption={true}
         captionTitle="Produtos"
       />

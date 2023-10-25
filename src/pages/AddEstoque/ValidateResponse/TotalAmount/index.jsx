@@ -1,6 +1,6 @@
 import { TotalAmountStyle } from "./style";
 import Table from "../../../../components/Table";
-export default function TotalAmount() {
+export default function TotalAmount({fatura}) {
   const tableList = [
     {
       vProd: "2850.00",
@@ -12,7 +12,7 @@ export default function TotalAmount() {
   return (
     <TotalAmountStyle>
       <Table
-        tableList={tableList}
+        tableList={[fatura]}
         hasCaption={true}
         captionTitle="Total"
       />
