@@ -1,6 +1,6 @@
 import { TableStyled } from "./style";
 
-import TableContexts from "./Contexts";
+import TableContexts from "../../contexts/Table";
 
 import TableCaption from "./Caption";
 import TableHeader from "./Header";
