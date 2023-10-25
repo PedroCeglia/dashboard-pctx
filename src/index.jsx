@@ -5,7 +5,7 @@ import "./styles/Fonts/font.css"
 
 import GlobalStyle from "./styles/global"
 import Rotas from "./Rotas"
-import ThemeProvider from './contexts/ThemeContext';
+import ThemeProvider from './contexts/Theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
