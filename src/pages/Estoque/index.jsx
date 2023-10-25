@@ -3,6 +3,7 @@ import { EstoqueStyle } from "./style";
 import { getEstoque } from "../../api/database";
 import { useState, useEffect } from "react";
 import { useLocation, Outlet } from "react-router-dom";
+import AddEstoqueProvider from "../../contexts/AddEstoque";
 
 export default function Estoque() {
   const [estoqueList, setEstoqueList] = useState([{}]);
@@ -15,7 +16,12 @@ export default function Estoque() {
 
   return (
     <EstoqueStyle>
-      {isAdding && <Outlet />}
+
+      {isAdding && 
+        <AddEstoqueProvider>
+          <Outlet />
+        </AddEstoqueProvider>
+      }
       <Table
         tableList={estoqueList}
         hasFooter={false}
