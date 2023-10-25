@@ -1,6 +1,5 @@
 import {
   NavBarStyle,
-  NavBarHeader,
   NavBarSectionsList,
   NavBarLinkList,
   NavBarLink,
@@ -10,11 +9,7 @@ import MenuToggle from "./MenuToggle";
 import { useLocation } from "react-router-dom";
 
 import navLinks from "../../../constants/navLinks";
-/*
-      <NavBarHeader>
-        <h2>Raça Surf</h2>
-      </NavBarHeader>
-*/
+
 export default function NavBar({ isActive, setIsActive, theme }) {
   const pathname = useLocation().pathname;
   return (
