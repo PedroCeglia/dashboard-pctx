@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const ProductsToAddStyle = styled.div`
-    margin: 40px 0;
-    width:80%;
-    max-height:50vh;
+    width: 100%;
+    max-height: 92vh;
 
     overflow: hidden;
     border-radius: 5px;
