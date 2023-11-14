@@ -10,17 +10,10 @@ export default function ValidateResponse(){
     const {NFe} = useAddEstoqueContext() 
     return(
         <ValidateResponseStyle>
-            <h2>Informações da Nota Fiscal</h2>
-            <EmitenteRemetente
-                emitente={NFe.emitente}
-                destinatario={NFe.destinatario}
-            />
             <ProductsToAdd
                 productsList={NFe.productsList}
             />
-            <TotalAmount
-                fatura={NFe.fatura}
-            />
+
             <button>Validar Nota</button>
         </ValidateResponseStyle>
     )

@@ -18,7 +18,7 @@ export const ValidateResponseStyle = styled.div`
         padding: 10px 20px ;
         background-color: rgba(255,255,255,.7);
         border: 1px solid rgba(0,0,0,.8);
-        margin: 0 0 40px ;
+        margin: 10px 0 ;
         cursor: pointer;
         transition: all .4s;
     }
