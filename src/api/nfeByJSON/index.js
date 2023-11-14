@@ -64,11 +64,12 @@ function getDestinatarioByJSON(json) {
 function getProductsList(json) {
   return json.map((item) => {
     const { vTotTrib } = item.imposto;
-    const { cProd, xProd, qCom, vUnCom, vProd, vUnTrib } = item.prod;
+    const { cProd, xProd, qCom, vUnCom, vProd, vUnTrib, NCM } = item.prod;
 
     return {
-      codigoDoProduto: cProd,
       nomeDoProduto: xProd,
+      codigoDoProduto: cProd,
+      nCM: NCM,
       valorUnidade: parseFloat(vUnCom).toFixed(2),
       quantidadeComprada: parseFloat(qCom).toFixed(0),
       valorTotal: parseFloat(vProd).toFixed(2),
