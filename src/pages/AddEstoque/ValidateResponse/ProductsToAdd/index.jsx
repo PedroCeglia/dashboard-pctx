@@ -99,7 +99,7 @@ export default function ProductsToAdd({productsList=[]}) {
       <Table
         tableList={productsList}
         hasCaption={true}
-        captionTitle="Produtos"
+        captionTitle="Informações da NFe"
       />
     </ProductsToAddStyle>
   );
