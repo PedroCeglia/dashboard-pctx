@@ -6,6 +6,7 @@ import Home from '../pages/Home'
 import AuthPage from '../pages/AuthPage'
 import AddEstoque from '../pages/AddEstoque'
 import Estoque from '../pages/Estoque'
+import CriandoNFe from '../pages/CreateNFe'
 
 export default function Rotas(){
     return(
@@ -23,6 +24,8 @@ export default function Rotas(){
                     <Route path='/estoque' element={<Estoque/>}>
                         <Route path='add' element={<AddEstoque/>}/>
                     </Route>
+
+                    <Route path='/create-nfe' element={<CriandoNFe/>} />
                     
                     <Route path='/registros' element={<h1>Registro</h1>}>
                         <Route path='/registros/vendas' element={<h1>Vendas</h1>}/>
