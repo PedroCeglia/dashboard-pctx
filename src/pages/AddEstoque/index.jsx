@@ -30,7 +30,7 @@ export default function AddEstoque() {
   return (
     <AddEstoqueContainerStyle>
       <AddEstoqueContentStyle isLoad={isLoadingNotafiscal}>
-        {false ? (
+        {true ? (
           <IntroForm
             handleSubmitNotaFiscal={handleSubmitNotaFiscal}
             handleChangeNotaFiscal={handleChangeNotaFiscal}

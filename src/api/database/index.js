@@ -1,6 +1,6 @@
 export async function getEstoque(setEstoqueList) {
     try {
-      const response = await fetch("http://localhost:5000/estoque");
+      const response = await fetch("http://localhost:5001/estoque");
   
       if (!response.ok) {
         throw new Error("Erro na requisição: " + response.status);
